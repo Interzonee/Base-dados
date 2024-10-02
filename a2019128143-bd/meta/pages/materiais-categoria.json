@@ -1,0 +1,196 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Materiais Categoria"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-materiais-categoria",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "attributes": [
+                    {
+                      "name": "@oninput",
+                      "value": "@(async(args) => {search = $\"{args.Value}\";await grid0.GoToPage(0);await Load();})"
+                    }
+                  ],
+                  "name": "textbox0",
+                  "placeholder": "Search ...",
+                  "style": {
+                    "display": "block",
+                    "marginBottom": "10px",
+                    "width": "100%"
+                  },
+                  "type": "textbox",
+                  "value": ""
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getMateriaisCategoriaResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowDoubleClick": []
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "MaterialID",
+                      "sortProperty": "Materiai.Titulo",
+                      "groupProperty": "Materiai.Titulo",
+                      "filterProperty": "Materiai.Titulo",
+                      "template": "${data.Materiai?.Titulo}",
+                      "title": "Materiai"
+                    },
+                    {
+                      "property": "CategoriaID",
+                      "sortProperty": "CategoriasMateriai.Nome",
+                      "groupProperty": "CategoriasMateriai.Nome",
+                      "filterProperty": "CategoriasMateriai.Nome",
+                      "template": "${data.CategoriasMateriai?.Nome}",
+                      "title": "Categorias Materiai"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete MateriaisCategoria",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "BibliotecaDB.deleteMateriaisCategoria",
+                                "parameters": [
+                                  {
+                                    "name": "MaterialID",
+                                    "value": "${data.MaterialID}"
+                                  },
+                                  {
+                                    "name": "CategoriaID",
+                                    "value": "${data.CategoriaID}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "A2019128143.Models.BibliotecaDb.MateriaisCategoria"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "condition": "string.IsNullOrEmpty(search)",
+        "name": "search",
+        "type": "set",
+        "value": "\"\"",
+        "valueType": "string"
+      },
+      {
+        "name": "BibliotecaDB.getMateriaisCategoria",
+        "parameters": [
+          {
+            "name": "$filter",
+            "operator": "or",
+            "value": []
+          },
+          {
+            "name": "$expand",
+            "value": "Materiai,CategoriasMateriai"
+          }
+        ],
+        "then": [
+          {
+            "name": "getMateriaisCategoriaResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.MateriaisCategoria>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Materiais Categoria",
+  "layout": "Main"
+}

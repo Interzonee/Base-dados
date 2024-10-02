@@ -1,0 +1,349 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "UtilizadorID",
+                              "name": "UtilizadorIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForUtilizadorIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "UtilizadorID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${avaliaco.UtilizadorID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Materiai",
+                              "component": "MaterialID",
+                              "name": "MaterialIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getMateriaisForMaterialIDResult}",
+                              "textProperty": "Titulo",
+                              "valueProperty": "MaterialID",
+                              "placeholder": "Choose Materiai",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "MaterialID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${avaliaco.MaterialID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nota",
+                              "component": "Nota",
+                              "name": "NotaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int?",
+                              "type": "numeric",
+                              "name": "Nota",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${avaliaco.Nota}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Comentario",
+                              "component": "Comentario",
+                              "name": "ComentarioLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 500,
+                              "type": "textbox",
+                              "name": "Comentario",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${avaliaco.Comentario}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Avaliacao",
+                              "component": "DataAvaliacao",
+                              "name": "DataAvaliacaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataAvaliacao",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${avaliaco.DataAvaliacao}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Avaliaco",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.updateAvaliaco",
+                        "parameters": [
+                          {
+                            "name": "AvaliacaoID",
+                            "value": "${parameters.AvaliacaoID}"
+                          },
+                          {
+                            "name": "Avaliaco",
+                            "value": "${avaliaco}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${avaliaco}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "A2019128143.Models.BibliotecaDb.Avaliaco",
+                  "data": "${avaliaco}",
+                  "visible": "${avaliaco != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getAvaliacoByAvaliacaoID",
+        "parameters": [
+          {
+            "name": "AvaliacaoID",
+            "value": "${parameters.AvaliacaoID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "avaliaco",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "A2019128143.Models.BibliotecaDb.Avaliaco"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForUtilizadorIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getMateriais",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getMateriaisForMaterialIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Materiai>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Avaliaco",
+  "layout": "Main"
+}

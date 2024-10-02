@@ -1,0 +1,62 @@
+﻿@page "/emprestimos"
+@layout MainLayout
+@inherits A2019128143.Pages.EmprestimosComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Emprestimos</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Emprestimos">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getEmprestimosResult" TItem="A2019128143.Models.BibliotecaDb.Emprestimo" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="EmprestimoID" Title="Emprestimo ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="UtilizadorID" SortProperty="Utilizadore.Nome" GroupProperty="Utilizadore.Nome" FilterProperty="Utilizadore.Nome" Title="Utilizadore">
+              <Template Context="data">
+              @(data.Utilizadore?.Nome)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="MaterialID" SortProperty="Materiai.Titulo" GroupProperty="Materiai.Titulo" FilterProperty="Materiai.Titulo" Title="Materiai">
+              <Template Context="data">
+              @(data.Materiai?.Titulo)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="DataEmprestimo" FormatString="{0:MM/dd/yyyy}" Title="Data Emprestimo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="DataDevolucaoPrevista" FormatString="{0:MM/dd/yyyy}" Title="Data Devolucao Prevista">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="DataDevolucaoEfetiva" FormatString="{0:MM/dd/yyyy}" Title="Data Devolucao Efetiva">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="Status" Title="Status">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="FuncionarioEmprestimoID" SortProperty="Utilizadore1.Nome" GroupProperty="Utilizadore1.Nome" FilterProperty="Utilizadore1.Nome" Title="Utilizadore">
+              <Template Context="data">
+              @(data.Utilizadore1?.Nome)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Property="FuncionarioDevolucaoID" SortProperty="Utilizadore2.Nome" GroupProperty="Utilizadore2.Nome" FilterProperty="Utilizadore2.Nome" Title="Utilizadore">
+              <Template Context="data">
+              @(data.Utilizadore2?.Nome)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbEmprestimo">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbEmprestimo))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

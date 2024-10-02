@@ -1,0 +1,72 @@
+﻿@inherits A2019128143.Layouts.MainLayoutComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+@using A2019128143.Pages
+<RadzenDialog />
+<RadzenNotification />
+<RadzenTooltip />
+<RadzenContextMenu />
+
+<RadzenLayout>
+  <ChildContent>
+    <RadzenHeader>
+      <ChildContent>
+        <div class="row justify-content-start align-items-center">
+          <div class="col-6 d-flex align-items-center">
+            <RadzenSidebarToggle Click="@SidebarToggle0Click">
+            </RadzenSidebarToggle>
+            <RadzenLabel Text="a2019128143">
+            </RadzenLabel>
+          </div>
+          <div class="col-6 text-right">
+          </div>
+        </div>
+      </ChildContent>
+    </RadzenHeader>
+    <RadzenBody @ref="body0">
+      <ChildContent>
+        <RadzenContentContainer Name="main">
+        @Body
+        </RadzenContentContainer>
+      </ChildContent>
+    </RadzenBody>
+    <RadzenSidebar @ref="sidebar0">
+      <ChildContent>
+        <RadzenPanelMenu style="height: 100%">
+          <ChildContent>
+            <RadzenPanelMenuItem Text="Avaliacos" Path="avaliacos">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Categorias Materiais" Path="categorias-materiais">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Emprestimos" Path="emprestimos">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Funcionarios" Path="funcionarios">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Materiais" Path="materiais">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Materiais Categoria" Path="materiais-categoria">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Multa" Path="multa">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Notificacos" Path="notificacos">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Reservas" Path="reservas">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Utilizadores" Path="utilizadores">
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Vw Materiais Disponiveis" Path="vw-materiais-disponiveis">
+            </RadzenPanelMenuItem>
+          </ChildContent>
+        </RadzenPanelMenu>
+      </ChildContent>
+    </RadzenSidebar>
+    <RadzenFooter>
+      <ChildContent>
+        <RadzenLabel Text="a2019128143, Copyright Ⓒ 2024">
+        </RadzenLabel>
+      </ChildContent>
+    </RadzenFooter>
+  </ChildContent>
+</RadzenLayout>

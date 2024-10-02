@@ -1,0 +1,230 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Multa"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-multa",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "attributes": [
+                    {
+                      "name": "@oninput",
+                      "value": "@(async(args) => {search = $\"{args.Value}\";await grid0.GoToPage(0);await Load();})"
+                    }
+                  ],
+                  "name": "textbox0",
+                  "placeholder": "Search ...",
+                  "style": {
+                    "display": "block",
+                    "marginBottom": "10px",
+                    "width": "100%"
+                  },
+                  "type": "textbox",
+                  "value": ""
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getMultaResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowDoubleClick": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "MultaID",
+                            "value": "${event.Data.MultaID}"
+                          }
+                        ],
+                        "path": "edit-multa",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "MultaID",
+                      "title": "Multa ID"
+                    },
+                    {
+                      "property": "EmprestimoID",
+                      "sortProperty": "Emprestimo.Status",
+                      "groupProperty": "Emprestimo.Status",
+                      "filterProperty": "Emprestimo.Status",
+                      "template": "${data.Emprestimo?.Status}",
+                      "title": "Emprestimo"
+                    },
+                    {
+                      "property": "Valor",
+                      "title": "Valor"
+                    },
+                    {
+                      "property": "DataGeracao",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Data Geracao"
+                    },
+                    {
+                      "property": "DataPagamento",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Data Pagamento"
+                    },
+                    {
+                      "property": "Status",
+                      "title": "Status"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Multa",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "BibliotecaDB.deleteMulta",
+                                "parameters": [
+                                  {
+                                    "name": "MultaID",
+                                    "value": "${data.MultaID}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "A2019128143.Models.BibliotecaDb.Multa"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "condition": "string.IsNullOrEmpty(search)",
+        "name": "search",
+        "type": "set",
+        "value": "\"\"",
+        "valueType": "string"
+      },
+      {
+        "name": "BibliotecaDB.getMulta",
+        "parameters": [
+          {
+            "name": "$filter",
+            "operator": "or",
+            "value": [
+              {
+                "operation": "contains",
+                "property": "Status",
+                "type": "string",
+                "value": "\"${search}\""
+              }
+            ]
+          },
+          {
+            "name": "$expand",
+            "value": "Emprestimo"
+          }
+        ],
+        "then": [
+          {
+            "name": "getMultaResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Multa>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Multa",
+  "layout": "Main"
+}

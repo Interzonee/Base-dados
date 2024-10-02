@@ -1,0 +1,84 @@
+﻿@page "/edit-utilizadore/{UtilizadorID}"
+@layout MainLayout
+@inherits A2019128143.Pages.EditUtilizadoreComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Edit Utilizadore</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Data="@utilizadore" Visible="@(utilizadore != null)" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Nome" Component="Nome" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="100" style="display: block; width: 100%" @bind-Value="@(utilizadore.Nome)" Name="Nome">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Nome" Text="Nome is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Email" Component="Email" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="100" style="display: block; width: 100%" @bind-Value="@(utilizadore.Email)" Name="Email">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Email" Text="Email is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tipo" Component="Tipo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="20" style="display: block; width: 100%" @bind-Value="@(utilizadore.Tipo)" Name="Tipo">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Tipo" Text="Tipo is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Data Registro" Component="DataRegistro" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(utilizadore.DataRegistro)" Name="DataRegistro">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Ativo" Component="Ativo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenCheckBox TriState="true" @bind-Value="@(utilizadore.Ativo)" Name="Ativo">
+                </RadzenCheckBox>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

@@ -1,0 +1,255 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Emprestimos"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-emprestimo",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "attributes": [
+                    {
+                      "name": "@oninput",
+                      "value": "@(async(args) => {search = $\"{args.Value}\";await grid0.GoToPage(0);await Load();})"
+                    }
+                  ],
+                  "name": "textbox0",
+                  "placeholder": "Search ...",
+                  "style": {
+                    "display": "block",
+                    "marginBottom": "10px",
+                    "width": "100%"
+                  },
+                  "type": "textbox",
+                  "value": ""
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getEmprestimosResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowDoubleClick": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "EmprestimoID",
+                            "value": "${event.Data.EmprestimoID}"
+                          }
+                        ],
+                        "path": "edit-emprestimo",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "EmprestimoID",
+                      "title": "Emprestimo ID"
+                    },
+                    {
+                      "property": "UtilizadorID",
+                      "sortProperty": "Utilizadore.Nome",
+                      "groupProperty": "Utilizadore.Nome",
+                      "filterProperty": "Utilizadore.Nome",
+                      "template": "${data.Utilizadore?.Nome}",
+                      "title": "Utilizadore"
+                    },
+                    {
+                      "property": "MaterialID",
+                      "sortProperty": "Materiai.Titulo",
+                      "groupProperty": "Materiai.Titulo",
+                      "filterProperty": "Materiai.Titulo",
+                      "template": "${data.Materiai?.Titulo}",
+                      "title": "Materiai"
+                    },
+                    {
+                      "property": "DataEmprestimo",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Data Emprestimo"
+                    },
+                    {
+                      "property": "DataDevolucaoPrevista",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Data Devolucao Prevista"
+                    },
+                    {
+                      "property": "DataDevolucaoEfetiva",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Data Devolucao Efetiva"
+                    },
+                    {
+                      "property": "Status",
+                      "title": "Status"
+                    },
+                    {
+                      "property": "FuncionarioEmprestimoID",
+                      "sortProperty": "Utilizadore1.Nome",
+                      "groupProperty": "Utilizadore1.Nome",
+                      "filterProperty": "Utilizadore1.Nome",
+                      "template": "${data.Utilizadore1?.Nome}",
+                      "title": "Utilizadore"
+                    },
+                    {
+                      "property": "FuncionarioDevolucaoID",
+                      "sortProperty": "Utilizadore2.Nome",
+                      "groupProperty": "Utilizadore2.Nome",
+                      "filterProperty": "Utilizadore2.Nome",
+                      "template": "${data.Utilizadore2?.Nome}",
+                      "title": "Utilizadore"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "condition": "await DialogService.Confirm(\"Are you sure you want to delete this record?\") == true",
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete Emprestimo",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "BibliotecaDB.deleteEmprestimo",
+                                "parameters": [
+                                  {
+                                    "name": "EmprestimoID",
+                                    "value": "${data.EmprestimoID}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "await grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "A2019128143.Models.BibliotecaDb.Emprestimo"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "condition": "string.IsNullOrEmpty(search)",
+        "name": "search",
+        "type": "set",
+        "value": "\"\"",
+        "valueType": "string"
+      },
+      {
+        "name": "BibliotecaDB.getEmprestimos",
+        "parameters": [
+          {
+            "name": "$filter",
+            "operator": "or",
+            "value": [
+              {
+                "operation": "contains",
+                "property": "Status",
+                "type": "string",
+                "value": "\"${search}\""
+              }
+            ]
+          },
+          {
+            "name": "$expand",
+            "value": "Utilizadore,Materiai,Utilizadore1,Utilizadore2"
+          }
+        ],
+        "then": [
+          {
+            "name": "getEmprestimosResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Emprestimo>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Emprestimos",
+  "layout": "Main"
+}

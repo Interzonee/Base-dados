@@ -1,0 +1,38 @@
+﻿@page "/categorias-materiais"
+@layout MainLayout
+@inherits A2019128143.Pages.CategoriasMateriaisComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Categorias Materiais</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Categorias Materiais">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getCategoriasMateriaisResult" TItem="A2019128143.Models.BibliotecaDb.CategoriasMateriai" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.CategoriasMateriai" Property="CategoriaID" Title="Categoria ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.CategoriasMateriai" Property="Nome" Title="Nome">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.CategoriasMateriai" Property="Descricao" Title="Descricao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.CategoriasMateriai" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbCategoriasMateriai">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbCategoriasMateriai))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

@@ -1,0 +1,161 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = A2019128143
+build_property.RootNamespace = A2019128143
+build_property.ProjectDir = C:\Users\bruni\Desktop\BdTrabalho\server\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\bruni\Desktop\BdTrabalho\server
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddAvaliaco.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQXZhbGlhY28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddCategoriasMateriai.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQ2F0ZWdvcmlhc01hdGVyaWFpLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddEmprestimo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRW1wcmVzdGltby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddFuncionario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRnVuY2lvbmFyaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddMateriai.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTWF0ZXJpYWkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddMateriaisCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTWF0ZXJpYWlzQ2F0ZWdvcmlhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddMulta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTXVsdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddNotificaco.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTm90aWZpY2Fjby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddReserva.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkUmVzZXJ2YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/AddUtilizadore.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVXRpbGl6YWRvcmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Avaliacos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXZhbGlhY29zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/CategoriasMateriais.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmlhc01hdGVyaWFpcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditAvaliaco.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEF2YWxpYWNvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditCategoriasMateriai.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdENhdGVnb3JpYXNNYXRlcmlhaS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditEmprestimo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEVtcHJlc3RpbW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditFuncionario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEZ1bmNpb25hcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditMateriai.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE1hdGVyaWFpLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditMulta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE11bHRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditNotificaco.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE5vdGlmaWNhY28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditReserva.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFJlc2VydmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/EditUtilizadore.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFV0aWxpemFkb3JlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Emprestimos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wcmVzdGltb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Funcionarios.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Materiais.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWF0ZXJpYWlzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/MateriaisCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWF0ZXJpYWlzQ2F0ZWdvcmlhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Multa.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVsdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Notificacos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2Fjb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Reservas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/Utilizadores.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl6YWRvcmVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/VwMateriaisDisponiveis.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVndNYXRlcmlhaXNEaXNwb25pdmVpcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Shared/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruni/Desktop/BdTrabalho/server/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

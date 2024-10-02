@@ -1,0 +1,325 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nome",
+                              "component": "Nome",
+                              "name": "NomeLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "Nome",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${utilizadore.Nome}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "NomeRequiredValidator",
+                              "component": "Nome",
+                              "text": "Nome is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Email",
+                              "component": "Email",
+                              "name": "EmailLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "Email",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${utilizadore.Email}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "EmailRequiredValidator",
+                              "component": "Email",
+                              "text": "Email is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tipo",
+                              "component": "Tipo",
+                              "name": "TipoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "Tipo",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${utilizadore.Tipo}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "TipoRequiredValidator",
+                              "component": "Tipo",
+                              "text": "Tipo is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Registro",
+                              "component": "DataRegistro",
+                              "name": "DataRegistroLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataRegistro",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${utilizadore.DataRegistro}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Ativo",
+                              "component": "Ativo",
+                              "name": "AtivoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "bool?",
+                              "type": "checkbox",
+                              "name": "Ativo",
+                              "triState": true,
+                              "value": "${utilizadore.Ativo}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Utilizadore!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.createUtilizadore",
+                        "parameters": [
+                          {
+                            "name": "Utilizadore",
+                            "value": "${utilizadore}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${utilizadore}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${utilizadore}",
+                  "visible": "${utilizadore != null}",
+                  "itemType": "A2019128143.Models.BibliotecaDb.Utilizadore"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "utilizadore",
+        "type": "set",
+        "value": "new A2019128143.Models.BibliotecaDb.Utilizadore(){}",
+        "valueType": "A2019128143.Models.BibliotecaDb.Utilizadore"
+      }
+    ]
+  },
+  "name": "Add Utilizadore",
+  "layout": "Main"
+}

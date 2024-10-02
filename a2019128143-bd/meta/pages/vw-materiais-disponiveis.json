@@ -1,0 +1,165 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Vw Materiais Disponiveis"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "attributes": [
+                    {
+                      "name": "@oninput",
+                      "value": "@(async(args) => {search = $\"{args.Value}\";await grid0.GoToPage(0);await Load();})"
+                    }
+                  ],
+                  "name": "textbox0",
+                  "placeholder": "Search ...",
+                  "style": {
+                    "display": "block",
+                    "marginBottom": "10px",
+                    "width": "100%"
+                  },
+                  "type": "textbox",
+                  "value": ""
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "filterMode": "advanced",
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getVwMateriaisDisponiveisResult}",
+                  "events": {
+                    "loadData": []
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "MaterialID",
+                      "title": "Material ID"
+                    },
+                    {
+                      "property": "Titulo",
+                      "title": "Titulo"
+                    },
+                    {
+                      "property": "Tipo",
+                      "title": "Tipo"
+                    },
+                    {
+                      "property": "Autor",
+                      "title": "Autor"
+                    },
+                    {
+                      "property": "Editora",
+                      "title": "Editora"
+                    },
+                    {
+                      "property": "AnoPublicacao",
+                      "title": "Ano Publicacao"
+                    },
+                    {
+                      "property": "ISBN",
+                      "title": "ISBN"
+                    },
+                    {
+                      "property": "Localizacao",
+                      "title": "Localizacao"
+                    },
+                    {
+                      "property": "ExemplaresDisponiveis",
+                      "title": "Exemplares Disponiveis"
+                    }
+                  ],
+                  "type": "datagrid",
+                  "itemType": "A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "condition": "string.IsNullOrEmpty(search)",
+        "name": "search",
+        "type": "set",
+        "value": "\"\"",
+        "valueType": "string"
+      },
+      {
+        "name": "BibliotecaDB.getVwMateriaisDisponiveis",
+        "parameters": [
+          {
+            "name": "$filter",
+            "operator": "or",
+            "value": [
+              {
+                "operation": "contains",
+                "property": "Titulo",
+                "type": "string",
+                "value": "\"${search}\""
+              },
+              {
+                "operation": "contains",
+                "property": "Tipo",
+                "type": "string",
+                "value": "\"${search}\""
+              },
+              {
+                "operation": "contains",
+                "property": "Autor",
+                "type": "string",
+                "value": "\"${search}\""
+              },
+              {
+                "operation": "contains",
+                "property": "Editora",
+                "type": "string",
+                "value": "\"${search}\""
+              },
+              {
+                "operation": "contains",
+                "property": "ISBN",
+                "type": "string",
+                "value": "\"${search}\""
+              },
+              {
+                "operation": "contains",
+                "property": "Localizacao",
+                "type": "string",
+                "value": "\"${search}\""
+              }
+            ]
+          }
+        ],
+        "then": [
+          {
+            "name": "getVwMateriaisDisponiveisResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Vw Materiais Disponiveis",
+  "layout": "Main"
+}

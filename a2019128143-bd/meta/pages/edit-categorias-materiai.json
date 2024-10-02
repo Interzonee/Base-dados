@@ -1,0 +1,209 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nome",
+                              "component": "Nome",
+                              "name": "NomeLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "Nome",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${categoriasmateriai.Nome}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "NomeRequiredValidator",
+                              "component": "Nome",
+                              "text": "Nome is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Descricao",
+                              "component": "Descricao",
+                              "name": "DescricaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 200,
+                              "type": "textbox",
+                              "name": "Descricao",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${categoriasmateriai.Descricao}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update CategoriasMateriai",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.updateCategoriasMateriai",
+                        "parameters": [
+                          {
+                            "name": "CategoriaID",
+                            "value": "${parameters.CategoriaID}"
+                          },
+                          {
+                            "name": "CategoriasMateriai",
+                            "value": "${categoriasmateriai}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${categoriasmateriai}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "A2019128143.Models.BibliotecaDb.CategoriasMateriai",
+                  "data": "${categoriasmateriai}",
+                  "visible": "${categoriasmateriai != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getCategoriasMateriaiByCategoriaID",
+        "parameters": [
+          {
+            "name": "CategoriaID",
+            "value": "${parameters.CategoriaID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "categoriasmateriai",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "A2019128143.Models.BibliotecaDb.CategoriasMateriai"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Categorias Materiai",
+  "layout": "Main"
+}

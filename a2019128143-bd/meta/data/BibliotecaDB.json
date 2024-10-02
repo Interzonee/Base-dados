@@ -1,0 +1,2914 @@
+{
+  "info": {
+    "title": "BibliotecaDB",
+    "x-type": "odata",
+    "x-connector": "mssql",
+    "x-connector-version": 16,
+    "x-infer-aspnet": false,
+    "x-infer-tables": true,
+    "x-infer-relations": true,
+    "x-infer-views": true,
+    "x-infer-sps": true
+  },
+  "definitions": {
+    "Avaliaco": {
+      "x-table": "dbo.Avaliacoes",
+      "resource": "Avaliacos",
+      "required": [],
+      "properties": {
+        "AvaliacaoID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Utilizadore": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "UtilizadorID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore",
+            "textProperty": "Nome",
+            "navigationProperty": "Avaliacos"
+          }
+        },
+        "Materiai": {
+          "type": "object",
+          "$ref": "#/definitions/Materiai"
+        },
+        "MaterialID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Materiais",
+            "parentEntityType": "Materiai",
+            "type": "Materiai",
+            "principalKey": "MaterialID",
+            "name": "Materiai",
+            "textProperty": "Titulo",
+            "navigationProperty": "Avaliacos"
+          }
+        },
+        "Nota": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Comentario": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 500
+        },
+        "DataAvaliacao": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        }
+      }
+    },
+    "CategoriasMateriai": {
+      "x-table": "dbo.CategoriasMateriais",
+      "resource": "CategoriasMateriais",
+      "required": [
+        "Nome"
+      ],
+      "properties": {
+        "CategoriaID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-navigation": [
+            {
+              "inversePropertyName": "CategoriasMateriai",
+              "name": "MateriaisCategoria",
+              "type": "MateriaisCategoria"
+            }
+          ]
+        },
+        "Nome": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "Descricao": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 200
+        },
+        "MateriaisCategoria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MateriaisCategoria"
+          }
+        }
+      }
+    },
+    "Emprestimo": {
+      "x-table": "dbo.Emprestimos",
+      "resource": "Emprestimos",
+      "required": [],
+      "properties": {
+        "EmprestimoID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Emprestimo",
+              "name": "Multa",
+              "type": "Multa"
+            }
+          ]
+        },
+        "Utilizadore": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "UtilizadorID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore",
+            "textProperty": "Nome",
+            "navigationProperty": "Emprestimos"
+          }
+        },
+        "Materiai": {
+          "type": "object",
+          "$ref": "#/definitions/Materiai"
+        },
+        "MaterialID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Materiais",
+            "parentEntityType": "Materiai",
+            "type": "Materiai",
+            "principalKey": "MaterialID",
+            "name": "Materiai",
+            "textProperty": "Titulo",
+            "navigationProperty": "Emprestimos"
+          }
+        },
+        "DataEmprestimo": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "DataDevolucaoPrevista": {
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "DataDevolucaoEfetiva": {
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Status": {
+          "x-default-sql": "('Ativo')",
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        },
+        "Utilizadore1": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "FuncionarioEmprestimoID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore1",
+            "textProperty": "Nome",
+            "navigationProperty": "Emprestimos1"
+          }
+        },
+        "Utilizadore2": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "FuncionarioDevolucaoID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore2",
+            "textProperty": "Nome",
+            "navigationProperty": "Emprestimos2"
+          }
+        },
+        "Multa": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Multa"
+          }
+        }
+      }
+    },
+    "Funcionario": {
+      "x-table": "dbo.Funcionarios",
+      "resource": "Funcionarios",
+      "required": [
+        "Cargo",
+        "DataContratacao"
+      ],
+      "properties": {
+        "FuncionarioID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Utilizadore": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "UtilizadorID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore",
+            "textProperty": "Nome",
+            "navigationProperty": "Funcionarios"
+          }
+        },
+        "Cargo": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "DataContratacao": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Salario": {
+          "x-precision": 10,
+          "x-scale": 2,
+          "type": "number",
+          "format": "decimal",
+          "dbType": "decimal"
+        },
+        "Departamento": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        }
+      }
+    },
+    "Materiai": {
+      "x-table": "dbo.Materiais",
+      "resource": "Materiais",
+      "required": [
+        "Titulo",
+        "Tipo"
+      ],
+      "properties": {
+        "MaterialID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Materiai",
+              "name": "Emprestimos",
+              "type": "Emprestimo"
+            },
+            {
+              "inversePropertyName": "Materiai",
+              "name": "Reservas",
+              "type": "Reserva"
+            },
+            {
+              "inversePropertyName": "Materiai",
+              "name": "Avaliacos",
+              "type": "Avaliaco"
+            },
+            {
+              "inversePropertyName": "Materiai",
+              "name": "MateriaisCategoria",
+              "type": "MateriaisCategoria"
+            }
+          ]
+        },
+        "Titulo": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 200
+        },
+        "Tipo": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "Autor": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "Editora": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "AnoPublicacao": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "NumeroExemplares": {
+          "x-default-sql": "((1))",
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "ISBN": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        },
+        "Localizacao": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "DataAquisicao": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Descricao": {
+          "type": "string",
+          "dbType": "nvarchar"
+        },
+        "Emprestimos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Emprestimo"
+          }
+        },
+        "Reservas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reserva"
+          }
+        },
+        "Avaliacos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Avaliaco"
+          }
+        },
+        "MateriaisCategoria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MateriaisCategoria"
+          }
+        }
+      }
+    },
+    "MateriaisCategoria": {
+      "x-table": "dbo.MateriaisCategorias",
+      "resource": "MateriaisCategoria",
+      "required": [
+        "MaterialID",
+        "CategoriaID"
+      ],
+      "properties": {
+        "Materiai": {
+          "type": "object",
+          "$ref": "#/definitions/Materiai"
+        },
+        "MaterialID": {
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "Materiais",
+            "parentEntityType": "Materiai",
+            "type": "Materiai",
+            "principalKey": "MaterialID",
+            "name": "Materiai",
+            "textProperty": "Titulo",
+            "navigationProperty": "MateriaisCategoria"
+          }
+        },
+        "CategoriasMateriai": {
+          "type": "object",
+          "$ref": "#/definitions/CategoriasMateriai"
+        },
+        "CategoriaID": {
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-key": true,
+          "x-foreignKey": {
+            "parentTable": "CategoriasMateriais",
+            "parentEntityType": "CategoriasMateriai",
+            "type": "CategoriasMateriai",
+            "principalKey": "CategoriaID",
+            "name": "CategoriasMateriai",
+            "textProperty": "Nome",
+            "navigationProperty": "MateriaisCategoria"
+          }
+        }
+      }
+    },
+    "Multa": {
+      "x-table": "dbo.Multas",
+      "resource": "Multa",
+      "required": [
+        "Valor"
+      ],
+      "properties": {
+        "MultaID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Emprestimo": {
+          "type": "object",
+          "$ref": "#/definitions/Emprestimo"
+        },
+        "EmprestimoID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Emprestimos",
+            "parentEntityType": "Emprestimo",
+            "type": "Emprestimo",
+            "principalKey": "EmprestimoID",
+            "name": "Emprestimo",
+            "textProperty": "Status",
+            "navigationProperty": "Multa"
+          }
+        },
+        "Valor": {
+          "x-nullable": false,
+          "x-precision": 10,
+          "x-scale": 2,
+          "type": "number",
+          "format": "decimal",
+          "dbType": "decimal"
+        },
+        "DataGeracao": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "DataPagamento": {
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Status": {
+          "x-default-sql": "('Pendente')",
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        }
+      }
+    },
+    "Notificaco": {
+      "x-table": "dbo.Notificacoes",
+      "resource": "Notificacos",
+      "required": [
+        "Mensagem"
+      ],
+      "properties": {
+        "NotificacaoID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Utilizadore": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "UtilizadorID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore",
+            "textProperty": "Nome",
+            "navigationProperty": "Notificacos"
+          }
+        },
+        "Mensagem": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 500
+        },
+        "DataEnvio": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "datetime",
+          "x-datetime": "datetime"
+        },
+        "Lida": {
+          "x-default-sql": "((0))",
+          "type": "boolean",
+          "dbType": "bit"
+        },
+        "Tipo": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        }
+      }
+    },
+    "Reserva": {
+      "x-table": "dbo.Reservas",
+      "resource": "Reservas",
+      "required": [],
+      "properties": {
+        "ReservaID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Utilizadore": {
+          "type": "object",
+          "$ref": "#/definitions/Utilizadore"
+        },
+        "UtilizadorID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Utilizadores",
+            "parentEntityType": "Utilizadore",
+            "type": "Utilizadore",
+            "principalKey": "UtilizadorID",
+            "name": "Utilizadore",
+            "textProperty": "Nome",
+            "navigationProperty": "Reservas"
+          }
+        },
+        "Materiai": {
+          "type": "object",
+          "$ref": "#/definitions/Materiai"
+        },
+        "MaterialID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Materiais",
+            "parentEntityType": "Materiai",
+            "type": "Materiai",
+            "principalKey": "MaterialID",
+            "name": "Materiai",
+            "textProperty": "Titulo",
+            "navigationProperty": "Reservas"
+          }
+        },
+        "DataReserva": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "DataExpiracao": {
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Status": {
+          "x-default-sql": "('Ativa')",
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        }
+      }
+    },
+    "SpRegistrarDevolucao": {
+      "x-view": "sp",
+      "x-table": "dbo.sp_RegistrarDevolucao",
+      "x-parameters": [
+        {
+          "name": "EmprestimoID",
+          "type": "integer",
+          "dbType": "int"
+        },
+        {
+          "name": "FuncionarioID",
+          "type": "integer",
+          "dbType": "int"
+        }
+      ],
+      "resource": "SpRegistrarDevolucaos",
+      "required": [],
+      "properties": {
+        "Mensagem": {
+          "x-computed": true,
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "varchar",
+          "length": 44,
+          "x-key": true,
+          "x-virtual": true
+        }
+      }
+    },
+    "SpRegistrarEmprestimo": {
+      "x-view": "sp",
+      "x-table": "dbo.sp_RegistrarEmprestimo",
+      "x-parameters": [
+        {
+          "name": "UtilizadorID",
+          "type": "integer",
+          "dbType": "int"
+        },
+        {
+          "name": "MaterialID",
+          "type": "integer",
+          "dbType": "int"
+        },
+        {
+          "name": "FuncionarioID",
+          "type": "integer",
+          "dbType": "int"
+        },
+        {
+          "name": "DiasEmprestimo",
+          "type": "integer",
+          "dbType": "int"
+        }
+      ],
+      "resource": "SpRegistrarEmprestimos",
+      "required": [],
+      "properties": {
+        "Mensagem": {
+          "x-computed": true,
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "varchar",
+          "length": 34,
+          "x-key": true,
+          "x-virtual": true
+        }
+      }
+    },
+    "SpRegistrarReserva": {
+      "x-view": "sp",
+      "x-table": "dbo.sp_RegistrarReserva",
+      "x-parameters": [
+        {
+          "name": "UtilizadorID",
+          "type": "integer",
+          "dbType": "int"
+        },
+        {
+          "name": "MaterialID",
+          "type": "integer",
+          "dbType": "int"
+        }
+      ],
+      "resource": "SpRegistrarReservas",
+      "required": [],
+      "properties": {
+        "Mensagem": {
+          "x-computed": true,
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "varchar",
+          "length": 31,
+          "x-key": true,
+          "x-virtual": true
+        }
+      }
+    },
+    "Utilizadore": {
+      "x-table": "dbo.Utilizadores",
+      "resource": "Utilizadores",
+      "required": [
+        "Nome",
+        "Email",
+        "Tipo"
+      ],
+      "properties": {
+        "UtilizadorID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Utilizadore",
+              "name": "Emprestimos",
+              "type": "Emprestimo"
+            },
+            {
+              "inversePropertyName": "Utilizadore1",
+              "name": "Emprestimos1",
+              "type": "Emprestimo"
+            },
+            {
+              "inversePropertyName": "Utilizadore2",
+              "name": "Emprestimos2",
+              "type": "Emprestimo"
+            },
+            {
+              "inversePropertyName": "Utilizadore",
+              "name": "Reservas",
+              "type": "Reserva"
+            },
+            {
+              "inversePropertyName": "Utilizadore",
+              "name": "Avaliacos",
+              "type": "Avaliaco"
+            },
+            {
+              "inversePropertyName": "Utilizadore",
+              "name": "Funcionarios",
+              "type": "Funcionario"
+            },
+            {
+              "inversePropertyName": "Utilizadore",
+              "name": "Notificacos",
+              "type": "Notificaco"
+            }
+          ]
+        },
+        "Nome": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "Email": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "Tipo": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        },
+        "DataRegistro": {
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Ativo": {
+          "x-default-sql": "((1))",
+          "type": "boolean",
+          "dbType": "bit"
+        },
+        "Emprestimos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Emprestimo"
+          }
+        },
+        "Reservas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reserva"
+          }
+        },
+        "Avaliacos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Avaliaco"
+          }
+        },
+        "Funcionarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Funcionario"
+          }
+        },
+        "Notificacos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Notificaco"
+          }
+        }
+      }
+    },
+    "VwMateriaisDisponivei": {
+      "x-view": true,
+      "x-table": "dbo.vw_MateriaisDisponiveis",
+      "resource": "VwMateriaisDisponiveis",
+      "required": [
+        "MaterialID",
+        "Titulo",
+        "Tipo"
+      ],
+      "properties": {
+        "MaterialID": {
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-key": true,
+          "x-virtual": true
+        },
+        "Titulo": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 200
+        },
+        "Tipo": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "Autor": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "Editora": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "AnoPublicacao": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "ISBN": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        },
+        "Localizacao": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "ExemplaresDisponiveis": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/Avaliacos": {
+      "get": {
+        "operationId": "getAvaliacos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Avaliaco"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createAvaliaco",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Avaliaco",
+            "schema": {
+              "$ref": "#/definitions/Avaliaco"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Avaliaco"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/CategoriasMateriais": {
+      "get": {
+        "operationId": "getCategoriasMateriais",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/CategoriasMateriai"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createCategoriasMateriai",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "CategoriasMateriai",
+            "schema": {
+              "$ref": "#/definitions/CategoriasMateriai"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/CategoriasMateriai"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Emprestimos": {
+      "get": {
+        "operationId": "getEmprestimos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Emprestimo"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createEmprestimo",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Emprestimo",
+            "schema": {
+              "$ref": "#/definitions/Emprestimo"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Emprestimo"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Funcionarios": {
+      "get": {
+        "operationId": "getFuncionarios",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Funcionario"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createFuncionario",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Funcionario",
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Materiais": {
+      "get": {
+        "operationId": "getMateriais",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Materiai"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createMateriai",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Materiai",
+            "schema": {
+              "$ref": "#/definitions/Materiai"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Materiai"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/MateriaisCategoria": {
+      "get": {
+        "operationId": "getMateriaisCategoria",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MateriaisCategoria"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createMateriaisCategoria",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "MateriaisCategoria",
+            "schema": {
+              "$ref": "#/definitions/MateriaisCategoria"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/MateriaisCategoria"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Multa": {
+      "get": {
+        "operationId": "getMulta",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Multa"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createMulta",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Multa",
+            "schema": {
+              "$ref": "#/definitions/Multa"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Multa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Notificacos": {
+      "get": {
+        "operationId": "getNotificacos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Notificaco"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createNotificaco",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Notificaco",
+            "schema": {
+              "$ref": "#/definitions/Notificaco"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Notificaco"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Reservas": {
+      "get": {
+        "operationId": "getReservas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Reserva"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createReserva",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Reserva",
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/SpRegistrarDevolucaosFunc(EmprestimoID={EmprestimoID},FuncionarioID={FuncionarioID})": {
+      "get": {
+        "operationId": "getSpRegistrarDevolucaos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "EmprestimoID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "FuncionarioID",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/SpRegistrarDevolucao"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/SpRegistrarEmprestimosFunc(UtilizadorID={UtilizadorID},MaterialID={MaterialID},FuncionarioID={FuncionarioID},DiasEmprestimo={DiasEmprestimo})": {
+      "get": {
+        "operationId": "getSpRegistrarEmprestimos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "UtilizadorID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "FuncionarioID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "DiasEmprestimo",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/SpRegistrarEmprestimo"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/SpRegistrarReservasFunc(UtilizadorID={UtilizadorID},MaterialID={MaterialID})": {
+      "get": {
+        "operationId": "getSpRegistrarReservas",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "UtilizadorID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/SpRegistrarReserva"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Utilizadores": {
+      "get": {
+        "operationId": "getUtilizadores",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Utilizadore"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUtilizadore",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Utilizadore",
+            "schema": {
+              "$ref": "#/definitions/Utilizadore"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Utilizadore"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/VwMateriaisDisponiveis": {
+      "get": {
+        "operationId": "getVwMateriaisDisponiveis",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwMateriaisDisponivei"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Avaliacos({AvaliacaoID})": {
+      "delete": {
+        "operationId": "deleteAvaliaco",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "AvaliacaoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getAvaliacoByAvaliacaoID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "AvaliacaoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Avaliaco"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateAvaliaco",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "AvaliacaoID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Avaliaco",
+            "schema": {
+              "$ref": "#/definitions/Avaliaco"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelAvaliacoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Avaliaco",
+            "schema": {
+              "$ref": "#/definitions/Avaliaco"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/CategoriasMateriais({CategoriaID})": {
+      "delete": {
+        "operationId": "deleteCategoriasMateriai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CategoriaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getCategoriasMateriaiByCategoriaID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CategoriaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/CategoriasMateriai"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateCategoriasMateriai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CategoriaID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "CategoriasMateriai",
+            "schema": {
+              "$ref": "#/definitions/CategoriasMateriai"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelCategoriasMateriaiChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "CategoriasMateriai",
+            "schema": {
+              "$ref": "#/definitions/CategoriasMateriai"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Emprestimos({EmprestimoID})": {
+      "delete": {
+        "operationId": "deleteEmprestimo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "EmprestimoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getEmprestimoByEmprestimoID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "EmprestimoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Emprestimo"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateEmprestimo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "EmprestimoID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Emprestimo",
+            "schema": {
+              "$ref": "#/definitions/Emprestimo"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelEmprestimoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Emprestimo",
+            "schema": {
+              "$ref": "#/definitions/Emprestimo"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Funcionarios({FuncionarioID})": {
+      "delete": {
+        "operationId": "deleteFuncionario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "FuncionarioID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getFuncionarioByFuncionarioID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "FuncionarioID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateFuncionario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "FuncionarioID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Funcionario",
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelFuncionarioChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Funcionario",
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Materiais({MaterialID})": {
+      "delete": {
+        "operationId": "deleteMateriai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getMateriaiByMaterialID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Materiai"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateMateriai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Materiai",
+            "schema": {
+              "$ref": "#/definitions/Materiai"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelMateriaiChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Materiai",
+            "schema": {
+              "$ref": "#/definitions/Materiai"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/MateriaisCategoria(MaterialID={MaterialID},CategoriaID={CategoriaID})": {
+      "delete": {
+        "operationId": "deleteMateriaisCategoria",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "CategoriaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getMateriaisCategoriaByMaterialIDAndCategoriaID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "CategoriaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/MateriaisCategoria"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateMateriaisCategoria",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MaterialID",
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "CategoriaID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "MateriaisCategoria",
+            "schema": {
+              "$ref": "#/definitions/MateriaisCategoria"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelMateriaisCategoriaChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "MateriaisCategoria",
+            "schema": {
+              "$ref": "#/definitions/MateriaisCategoria"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Multa({MultaID})": {
+      "delete": {
+        "operationId": "deleteMulta",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MultaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getMultaByMultaID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MultaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Multa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateMulta",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "MultaID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Multa",
+            "schema": {
+              "$ref": "#/definitions/Multa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelMultaChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Multa",
+            "schema": {
+              "$ref": "#/definitions/Multa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Notificacos({NotificacaoID})": {
+      "delete": {
+        "operationId": "deleteNotificaco",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "NotificacaoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getNotificacoByNotificacaoID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "NotificacaoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Notificaco"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateNotificaco",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "NotificacaoID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Notificaco",
+            "schema": {
+              "$ref": "#/definitions/Notificaco"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelNotificacoChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Notificaco",
+            "schema": {
+              "$ref": "#/definitions/Notificaco"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Reservas({ReservaID})": {
+      "delete": {
+        "operationId": "deleteReserva",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ReservaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getReservaByReservaID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ReservaID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateReserva",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ReservaID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Reserva",
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelReservaChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Reserva",
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Utilizadores({UtilizadorID})": {
+      "delete": {
+        "operationId": "deleteUtilizadore",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "UtilizadorID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getUtilizadoreByUtilizadorID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "UtilizadorID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Utilizadore"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateUtilizadore",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "UtilizadorID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Utilizadore",
+            "schema": {
+              "$ref": "#/definitions/Utilizadore"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelUtilizadoreChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Utilizadore",
+            "schema": {
+              "$ref": "#/definitions/Utilizadore"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/BibliotecaDB",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

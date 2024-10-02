@@ -1,0 +1,237 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Materiai",
+                              "component": "MaterialID",
+                              "name": "MaterialIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getMateriaisForMaterialIDResult}",
+                              "textProperty": "Titulo",
+                              "valueProperty": "MaterialID",
+                              "placeholder": "Choose Materiai",
+                              "valueType": "int",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "MaterialID",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${materiaiscategoria.MaterialID}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "MaterialIDRequiredValidator",
+                              "component": "MaterialID",
+                              "text": "MaterialID is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Categorias Materiai",
+                              "component": "CategoriaID",
+                              "name": "CategoriaIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getCategoriasMateriaisForCategoriaIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "CategoriaID",
+                              "placeholder": "Choose CategoriasMateriai",
+                              "valueType": "int",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "CategoriaID",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${materiaiscategoria.CategoriaID}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "CategoriaIDRequiredValidator",
+                              "component": "CategoriaID",
+                              "text": "CategoriaID is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new MateriaisCategoria!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.createMateriaisCategoria",
+                        "parameters": [
+                          {
+                            "name": "MateriaisCategoria",
+                            "value": "${materiaiscategoria}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${materiaiscategoria}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${materiaiscategoria}",
+                  "visible": "${materiaiscategoria != null}",
+                  "itemType": "A2019128143.Models.BibliotecaDb.MateriaisCategoria"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getMateriais",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getMateriaisForMaterialIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Materiai>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getCategoriasMateriais",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getCategoriasMateriaisForCategoriaIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.CategoriasMateriai>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "materiaiscategoria",
+        "type": "set",
+        "value": "new A2019128143.Models.BibliotecaDb.MateriaisCategoria(){}",
+        "valueType": "A2019128143.Models.BibliotecaDb.MateriaisCategoria"
+      }
+    ]
+  },
+  "name": "Add Materiais Categoria",
+  "layout": "Main"
+}

@@ -1,0 +1,44 @@
+﻿@page "/utilizadores"
+@layout MainLayout
+@inherits A2019128143.Pages.UtilizadoresComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Utilizadores</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Utilizadores">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getUtilizadoresResult" TItem="A2019128143.Models.BibliotecaDb.Utilizadore" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Property="UtilizadorID" Title="Utilizador ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Property="Nome" Title="Nome">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Property="Email" Title="Email">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Property="Tipo" Title="Tipo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Property="DataRegistro" FormatString="{0:MM/dd/yyyy}" Title="Data Registro">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Property="Ativo" Title="Ativo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Utilizadore" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbUtilizadore">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbUtilizadore))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

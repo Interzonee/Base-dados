@@ -1,0 +1,324 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Emprestimo",
+                              "component": "EmprestimoID",
+                              "name": "EmprestimoIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getEmprestimosForEmprestimoIDResult}",
+                              "textProperty": "Status",
+                              "valueProperty": "EmprestimoID",
+                              "placeholder": "Choose Emprestimo",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "EmprestimoID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${multa.EmprestimoID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Valor",
+                              "component": "Valor",
+                              "name": "ValorLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "decimal",
+                              "type": "numeric",
+                              "name": "Valor",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${multa.Valor}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "ValorRequiredValidator",
+                              "component": "Valor",
+                              "text": "Valor is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Geracao",
+                              "component": "DataGeracao",
+                              "name": "DataGeracaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataGeracao",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${multa.DataGeracao}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Pagamento",
+                              "component": "DataPagamento",
+                              "name": "DataPagamentoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataPagamento",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${multa.DataPagamento}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Status",
+                              "component": "Status",
+                              "name": "StatusLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "Status",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${multa.Status}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Multa!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.createMulta",
+                        "parameters": [
+                          {
+                            "name": "Multa",
+                            "value": "${multa}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${multa}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${multa}",
+                  "visible": "${multa != null}",
+                  "itemType": "A2019128143.Models.BibliotecaDb.Multa"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getEmprestimos",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getEmprestimosForEmprestimoIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Emprestimo>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "multa",
+        "type": "set",
+        "value": "new A2019128143.Models.BibliotecaDb.Multa(){}",
+        "valueType": "A2019128143.Models.BibliotecaDb.Multa"
+      }
+    ]
+  },
+  "name": "Add Multa",
+  "layout": "Main"
+}

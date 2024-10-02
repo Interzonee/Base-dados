@@ -1,0 +1,332 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "UtilizadorID",
+                              "name": "UtilizadorIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForUtilizadorIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "UtilizadorID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${reserva.UtilizadorID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Materiai",
+                              "component": "MaterialID",
+                              "name": "MaterialIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getMateriaisForMaterialIDResult}",
+                              "textProperty": "Titulo",
+                              "valueProperty": "MaterialID",
+                              "placeholder": "Choose Materiai",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "MaterialID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${reserva.MaterialID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Reserva",
+                              "component": "DataReserva",
+                              "name": "DataReservaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataReserva",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${reserva.DataReserva}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Expiracao",
+                              "component": "DataExpiracao",
+                              "name": "DataExpiracaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataExpiracao",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${reserva.DataExpiracao}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Status",
+                              "component": "Status",
+                              "name": "StatusLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "Status",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${reserva.Status}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Reserva!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.createReserva",
+                        "parameters": [
+                          {
+                            "name": "Reserva",
+                            "value": "${reserva}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${reserva}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${reserva}",
+                  "visible": "${reserva != null}",
+                  "itemType": "A2019128143.Models.BibliotecaDb.Reserva"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForUtilizadorIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getMateriais",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getMateriaisForMaterialIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Materiai>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "reserva",
+        "type": "set",
+        "value": "new A2019128143.Models.BibliotecaDb.Reserva(){}",
+        "valueType": "A2019128143.Models.BibliotecaDb.Reserva"
+      }
+    ]
+  },
+  "name": "Add Reserva",
+  "layout": "Main"
+}

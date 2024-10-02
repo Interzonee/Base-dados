@@ -1,0 +1,54 @@
+﻿@page "/materiais"
+@layout MainLayout
+@inherits A2019128143.Pages.MateriaisComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Materiais</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Materiais">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getMateriaisResult" TItem="A2019128143.Models.BibliotecaDb.Materiai" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="MaterialID" Title="Material ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="Titulo" Title="Titulo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="Tipo" Title="Tipo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="Autor" Title="Autor">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="Editora" Title="Editora">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="AnoPublicacao" Title="Ano Publicacao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="NumeroExemplares" Title="Numero Exemplares">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="ISBN" Title="ISBN">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="Localizacao" Title="Localizacao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="DataAquisicao" FormatString="{0:MM/dd/yyyy}" Title="Data Aquisicao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Property="Descricao" Title="Descricao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Materiai" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbMateriai">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbMateriai))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

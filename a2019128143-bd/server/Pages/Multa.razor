@@ -1,0 +1,47 @@
+﻿@page "/multa"
+@layout MainLayout
+@inherits A2019128143.Pages.MultaComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Multa</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Multa">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getMultaResult" TItem="A2019128143.Models.BibliotecaDb.Multa" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Property="MultaID" Title="Multa ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Property="EmprestimoID" SortProperty="Emprestimo.Status" GroupProperty="Emprestimo.Status" FilterProperty="Emprestimo.Status" Title="Emprestimo">
+              <Template Context="data">
+              @(data.Emprestimo?.Status)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Property="Valor" Title="Valor">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Property="DataGeracao" FormatString="{0:MM/dd/yyyy}" Title="Data Geracao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Property="DataPagamento" FormatString="{0:MM/dd/yyyy}" Title="Data Pagamento">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Property="Status" Title="Status">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Multa" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbMulta">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbMulta))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

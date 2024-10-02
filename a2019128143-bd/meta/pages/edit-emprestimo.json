@@ -1,0 +1,501 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "UtilizadorID",
+                              "name": "UtilizadorIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForUtilizadorIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "UtilizadorID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.UtilizadorID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Materiai",
+                              "component": "MaterialID",
+                              "name": "MaterialIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getMateriaisForMaterialIDResult}",
+                              "textProperty": "Titulo",
+                              "valueProperty": "MaterialID",
+                              "placeholder": "Choose Materiai",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "MaterialID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.MaterialID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Emprestimo",
+                              "component": "DataEmprestimo",
+                              "name": "DataEmprestimoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataEmprestimo",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.DataEmprestimo}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Devolucao Prevista",
+                              "component": "DataDevolucaoPrevista",
+                              "name": "DataDevolucaoPrevistaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataDevolucaoPrevista",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.DataDevolucaoPrevista}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Devolucao Efetiva",
+                              "component": "DataDevolucaoEfetiva",
+                              "name": "DataDevolucaoEfetivaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataDevolucaoEfetiva",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.DataDevolucaoEfetiva}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Status",
+                              "component": "Status",
+                              "name": "StatusLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "Status",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.Status}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "FuncionarioEmprestimoID",
+                              "name": "FuncionarioEmprestimoIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForFuncionarioEmprestimoIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "FuncionarioEmprestimoID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.FuncionarioEmprestimoID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "FuncionarioDevolucaoID",
+                              "name": "FuncionarioDevolucaoIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForFuncionarioDevolucaoIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "FuncionarioDevolucaoID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${emprestimo.FuncionarioDevolucaoID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Emprestimo",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.updateEmprestimo",
+                        "parameters": [
+                          {
+                            "name": "EmprestimoID",
+                            "value": "${parameters.EmprestimoID}"
+                          },
+                          {
+                            "name": "Emprestimo",
+                            "value": "${emprestimo}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${emprestimo}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "A2019128143.Models.BibliotecaDb.Emprestimo",
+                  "data": "${emprestimo}",
+                  "visible": "${emprestimo != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getEmprestimoByEmprestimoID",
+        "parameters": [
+          {
+            "name": "EmprestimoID",
+            "value": "${parameters.EmprestimoID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "emprestimo",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "A2019128143.Models.BibliotecaDb.Emprestimo"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForUtilizadorIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getMateriais",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getMateriaisForMaterialIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Materiai>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForFuncionarioEmprestimoIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForFuncionarioDevolucaoIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Emprestimo",
+  "layout": "Main"
+}

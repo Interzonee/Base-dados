@@ -1,0 +1,50 @@
+﻿@page "/reservas"
+@layout MainLayout
+@inherits A2019128143.Pages.ReservasComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Reservas</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Reservas">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getReservasResult" TItem="A2019128143.Models.BibliotecaDb.Reserva" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Property="ReservaID" Title="Reserva ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Property="UtilizadorID" SortProperty="Utilizadore.Nome" GroupProperty="Utilizadore.Nome" FilterProperty="Utilizadore.Nome" Title="Utilizadore">
+              <Template Context="data">
+              @(data.Utilizadore?.Nome)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Property="MaterialID" SortProperty="Materiai.Titulo" GroupProperty="Materiai.Titulo" FilterProperty="Materiai.Titulo" Title="Materiai">
+              <Template Context="data">
+              @(data.Materiai?.Titulo)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Property="DataReserva" FormatString="{0:MM/dd/yyyy}" Title="Data Reserva">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Property="DataExpiracao" FormatString="{0:MM/dd/yyyy}" Title="Data Expiracao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Property="Status" Title="Status">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.Reserva" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbReserva">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbReserva))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

@@ -1,0 +1,42 @@
+﻿@page "/vw-materiais-disponiveis"
+@layout MainLayout
+@inherits A2019128143.Pages.VwMateriaisDisponiveisComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Vw Materiais Disponiveis</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Vw Materiais Disponiveis">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getVwMateriaisDisponiveisResult" TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="MaterialID" Title="Material ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="Titulo" Title="Titulo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="Tipo" Title="Tipo">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="Autor" Title="Autor">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="Editora" Title="Editora">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="AnoPublicacao" Title="Ano Publicacao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="ISBN" Title="ISBN">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="Localizacao" Title="Localizacao">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.VwMateriaisDisponivei" Property="ExemplaresDisponiveis" Title="Exemplares Disponiveis">
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

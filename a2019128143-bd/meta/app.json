@@ -1,0 +1,63 @@
+{
+  "dataSources": [
+    "BibliotecaDB"
+  ],
+  "generator": "@radzen/blazor-server",
+  "https": false,
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "a2019128143",
+  "navigation": [
+    "Avaliacos",
+    "Categorias Materiais",
+    "Emprestimos",
+    "Funcionarios",
+    "Materiais",
+    "Materiais Categoria",
+    "Multa",
+    "Notificacos",
+    "Reservas",
+    "Utilizadores",
+    "Vw Materiais Disponiveis"
+  ],
+  "pages": [
+    "Avaliacos",
+    "Add Avaliaco",
+    "Edit Avaliaco",
+    "Categorias Materiais",
+    "Add Categorias Materiai",
+    "Edit Categorias Materiai",
+    "Emprestimos",
+    "Add Emprestimo",
+    "Edit Emprestimo",
+    "Funcionarios",
+    "Add Funcionario",
+    "Edit Funcionario",
+    "Materiais",
+    "Add Materiai",
+    "Edit Materiai",
+    "Materiais Categoria",
+    "Add Materiais Categoria",
+    "Multa",
+    "Add Multa",
+    "Edit Multa",
+    "Notificacos",
+    "Add Notificaco",
+    "Edit Notificaco",
+    "Reservas",
+    "Add Reserva",
+    "Edit Reserva",
+    "Utilizadores",
+    "Add Utilizadore",
+    "Edit Utilizadore",
+    "Vw Materiais Disponiveis"
+  ],
+  "serverLang": "cs",
+  "serverProject": true,
+  "serverVersion": "7",
+  "startPage": "Avaliacos",
+  "theme": "standard"
+}

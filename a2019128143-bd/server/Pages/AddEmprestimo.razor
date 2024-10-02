@@ -1,0 +1,108 @@
+﻿@page "/add-emprestimo"
+@layout MainLayout
+@inherits A2019128143.Pages.AddEmprestimoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Add Emprestimo</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@emprestimo" Visible="@(emprestimo != null)" TItem="A2019128143.Models.BibliotecaDb.Emprestimo" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Utilizadore" Component="UtilizadorID" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getUtilizadoresForUtilizadorIDResult" TextProperty="Nome" ValueProperty="UtilizadorID" Placeholder="Choose Utilizadore" ShowSearch="false" style="width: 100%" @bind-Value="@(emprestimo.UtilizadorID)" Name="UtilizadorID">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Materiai" Component="MaterialID" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getMateriaisForMaterialIDResult" TextProperty="Titulo" ValueProperty="MaterialID" Placeholder="Choose Materiai" ShowSearch="false" style="width: 100%" @bind-Value="@(emprestimo.MaterialID)" Name="MaterialID">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Data Emprestimo" Component="DataEmprestimo" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(emprestimo.DataEmprestimo)" Name="DataEmprestimo">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Data Devolucao Prevista" Component="DataDevolucaoPrevista" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(emprestimo.DataDevolucaoPrevista)" Name="DataDevolucaoPrevista">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Data Devolucao Efetiva" Component="DataDevolucaoEfetiva" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(emprestimo.DataDevolucaoEfetiva)" Name="DataDevolucaoEfetiva">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Status" Component="Status" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="20" style="width: 100%" @bind-Value="@(emprestimo.Status)" Name="Status">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Utilizadore" Component="FuncionarioEmprestimoID" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getUtilizadoresForFuncionarioEmprestimoIDResult" TextProperty="Nome" ValueProperty="UtilizadorID" Placeholder="Choose Utilizadore" ShowSearch="false" style="width: 100%" @bind-Value="@(emprestimo.FuncionarioEmprestimoID)" Name="FuncionarioEmprestimoID">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Utilizadore" Component="FuncionarioDevolucaoID" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getUtilizadoresForFuncionarioDevolucaoIDResult" TextProperty="Nome" ValueProperty="UtilizadorID" Placeholder="Choose Utilizadore" ShowSearch="false" style="width: 100%" @bind-Value="@(emprestimo.FuncionarioDevolucaoID)" Name="FuncionarioDevolucaoID">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

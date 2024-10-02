@@ -1,0 +1,78 @@
+﻿@page "/edit-avaliaco/{AvaliacaoID}"
+@layout MainLayout
+@inherits A2019128143.Pages.EditAvaliacoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Edit Avaliaco</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm TItem="A2019128143.Models.BibliotecaDb.Avaliaco" Data="@avaliaco" Visible="@(avaliaco != null)" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Utilizadore" Component="UtilizadorID" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getUtilizadoresForUtilizadorIDResult" TextProperty="Nome" ValueProperty="UtilizadorID" Placeholder="Choose Utilizadore" ShowSearch="false" style="width: 100%" @bind-Value="@(avaliaco.UtilizadorID)" Name="UtilizadorID">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Materiai" Component="MaterialID" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getMateriaisForMaterialIDResult" TextProperty="Titulo" ValueProperty="MaterialID" Placeholder="Choose Materiai" ShowSearch="false" style="width: 100%" @bind-Value="@(avaliaco.MaterialID)" Name="MaterialID">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Nota" Component="Nota" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="width: 100%" @bind-Value="@(avaliaco.Nota)" Name="Nota">
+                </RadzenNumeric>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Comentario" Component="Comentario" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="500" style="width: 100%" @bind-Value="@(avaliaco.Comentario)" Name="Comentario">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Data Avaliacao" Component="DataAvaliacao" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(avaliaco.DataAvaliacao)" Name="DataAvaliacao">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

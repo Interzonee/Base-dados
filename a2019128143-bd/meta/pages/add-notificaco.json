@@ -1,0 +1,322 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "UtilizadorID",
+                              "name": "UtilizadorIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForUtilizadorIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "UtilizadorID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${notificaco.UtilizadorID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Mensagem",
+                              "component": "Mensagem",
+                              "name": "MensagemLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 500,
+                              "type": "textbox",
+                              "name": "Mensagem",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${notificaco.Mensagem}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "MensagemRequiredValidator",
+                              "component": "Mensagem",
+                              "text": "Mensagem is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Envio",
+                              "component": "DataEnvio",
+                              "name": "DataEnvioLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataEnvio",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${notificaco.DataEnvio}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Lida",
+                              "component": "Lida",
+                              "name": "LidaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "bool?",
+                              "type": "checkbox",
+                              "name": "Lida",
+                              "triState": true,
+                              "value": "${notificaco.Lida}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tipo",
+                              "component": "Tipo",
+                              "name": "TipoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "Tipo",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${notificaco.Tipo}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Notificaco!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.createNotificaco",
+                        "parameters": [
+                          {
+                            "name": "Notificaco",
+                            "value": "${notificaco}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${notificaco}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${notificaco}",
+                  "visible": "${notificaco != null}",
+                  "itemType": "A2019128143.Models.BibliotecaDb.Notificaco"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForUtilizadorIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "notificaco",
+        "type": "set",
+        "value": "new A2019128143.Models.BibliotecaDb.Notificaco(){}",
+        "valueType": "A2019128143.Models.BibliotecaDb.Notificaco"
+      }
+    ]
+  },
+  "name": "Add Notificaco",
+  "layout": "Main"
+}

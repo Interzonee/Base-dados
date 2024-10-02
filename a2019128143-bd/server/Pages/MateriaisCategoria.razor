@@ -1,0 +1,42 @@
+﻿@page "/materiais-categoria"
+@layout MainLayout
+@inherits A2019128143.Pages.MateriaisCategoriaComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using A2019128143.Models.BibliotecaDb
+<PageTitle>Materiais Categoria</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Materiais Categoria">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await Load();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getMateriaisCategoriaResult" TItem="A2019128143.Models.BibliotecaDb.MateriaisCategoria">
+          <Columns>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.MateriaisCategoria" Property="MaterialID" SortProperty="Materiai.Titulo" GroupProperty="Materiai.Titulo" FilterProperty="Materiai.Titulo" Title="Materiai">
+              <Template Context="data">
+              @(data.Materiai?.Titulo)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.MateriaisCategoria" Property="CategoriaID" SortProperty="CategoriasMateriai.Nome" GroupProperty="CategoriasMateriai.Nome" FilterProperty="CategoriasMateriai.Nome" Title="Categorias Materiai">
+              <Template Context="data">
+              @(data.CategoriasMateriai?.Nome)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="A2019128143.Models.BibliotecaDb.MateriaisCategoria" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="a2019128143ModelsBibliotecaDbMateriaisCategoria">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, a2019128143ModelsBibliotecaDbMateriaisCategoria))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

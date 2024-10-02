@@ -1,0 +1,352 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Utilizadore",
+                              "component": "UtilizadorID",
+                              "name": "UtilizadorIDLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUtilizadoresForUtilizadorIDResult}",
+                              "textProperty": "Nome",
+                              "valueProperty": "UtilizadorID",
+                              "placeholder": "Choose Utilizadore",
+                              "valueType": "int?",
+                              "showSearch": false,
+                              "type": "dropdown-datagrid",
+                              "name": "UtilizadorID",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${funcionario.UtilizadorID}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Cargo",
+                              "component": "Cargo",
+                              "name": "CargoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "Cargo",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${funcionario.Cargo}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "CargoRequiredValidator",
+                              "component": "Cargo",
+                              "text": "Cargo is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Contratacao",
+                              "component": "DataContratacao",
+                              "name": "DataContratacaoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "DataContratacao",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${funcionario.DataContratacao}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "DataContratacaoRequiredValidator",
+                              "component": "DataContratacao",
+                              "text": "DataContratacao is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Salario",
+                              "component": "Salario",
+                              "name": "SalarioLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "decimal?",
+                              "type": "numeric",
+                              "name": "Salario",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${funcionario.Salario}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Departamento",
+                              "component": "Departamento",
+                              "name": "DepartamentoLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "Departamento",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${funcionario.Departamento}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Funcionario",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "BibliotecaDB.updateFuncionario",
+                        "parameters": [
+                          {
+                            "name": "FuncionarioID",
+                            "value": "${parameters.FuncionarioID}"
+                          },
+                          {
+                            "name": "Funcionario",
+                            "value": "${funcionario}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${funcionario}",
+                            "condition": ""
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "A2019128143.Models.BibliotecaDb.Funcionario",
+                  "data": "${funcionario}",
+                  "visible": "${funcionario != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "BibliotecaDB.getFuncionarioByFuncionarioID",
+        "parameters": [
+          {
+            "name": "FuncionarioID",
+            "value": "${parameters.FuncionarioID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "funcionario",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "A2019128143.Models.BibliotecaDb.Funcionario"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "BibliotecaDB.getUtilizadores",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUtilizadoresForUtilizadorIDResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<A2019128143.Models.BibliotecaDb.Utilizadore>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Funcionario",
+  "layout": "Main"
+}
